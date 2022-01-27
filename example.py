@@ -61,7 +61,7 @@ env.step(env.action_space.sample())
 # For the last step, we read out the state-list as well as the reward and done-flag.
 # Note that the read-out reward is only non-zero if done==True in case that env.sparse_reward is True, therefore we set:
 env.sparse_reward = False
-[simulation, n, d], reward, done, _ = env.step(env.action_space.sample())
+[simulation, n, d, one_hot], reward, done, _ = env.step(env.action_space.sample())
 
 # Finally, we render the target that was provided above as well as the current state of the environment
 # Namely, the state is defined by the currently formed thin film as well as the corresponding optical behavior
