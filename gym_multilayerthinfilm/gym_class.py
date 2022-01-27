@@ -132,17 +132,7 @@ class MultiLayerThinFilm(gym.Env):
         self.action_space = spaces.Tuple(space_list)
         self.action_space.spaces[0].shape = (1, )
         # simulation state space:
-        if pca is not None:
-            if sparse_reward:
-                self.observation_space = spaces.Box(low=0, high=1,
-                                                    shape=((self.number_of_materials + 1) * maximum_layers,),
-                                                    dtype=np.float)
-            else:
-                self.observation_space = spaces.Box(low=-5, high=5,
-                                                    shape=((self.number_of_materials + 1) * maximum_layers + pca,),
-                                                    dtype=np.float)
-        else:
-            self.observation_space = spaces.Box(low=0, high=1, shape=((self.number_of_materials + 1)*maximum_layers, ), dtype=np.float)
+        self.observation_space = spaces.Box(low=0, high=1, shape=((self.number_of_materials + 1)*maximum_layers, ), dtype=np.float)
         if weights is None:
             self.weights = np.ones_like(self.target)
         else:
