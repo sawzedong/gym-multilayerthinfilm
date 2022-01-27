@@ -503,57 +503,6 @@ class MultiLayerThinFilm(gym.Env):
             t = (ts + tp) / 2
             return t
 
-    def pso_optimize(self, lb, ub, f_constraint=None):
-        from pyswarm import pso
-        if f_constraint is None:
-            xopt, fopt = pso(self.objective, lb, ub)
-        else:
-            xopt, fopt = pso(self.objective, lb, ub, f_ieqcons=f_constraint)
-        return xopt, fopt
-
-    def pso_opt_last_layer(self, lb, ub):
-        from pyswarm import pso
-        limits = []
-        if len(self.d) > 0:
-            x0 = np.array(self.d)
-            for dim in range(x0.shape[0]-1):
-                lb[dim] = x0[dim] * 0.99
-                ub[dim] = x0[dim] * 1.01
-            xopt, fopt = pso(self.objective, lb, ub)
-        else:
-            xopt, fopt = None, None
-        return xopt, fopt
-
-    def local_optimize(self, lb, ub):
-        import scipy.optimize as optimize
-        limits = []
-        for dim in range(lb.shape[0]):
-            limits.append((lb[dim], ub[dim]))
-        if len(self.d) > 0:
-            x0 = np.array(self.d)
-            res = optimize.minimize(self.objective, x0, bounds=limits, method='SLSQP')
-            x = res.x
-        else:
-            x = None
-        return x
-
-    def objective(self, d_array, n_array=None, set_environment=True, return_std=False, change_reward=True):
-        if set_environment:
-            self.d = list(d_array)
-            if n_array is not None:
-                self.n = list(n_array)
-        assert len(self.d) == len(self.n), 'Length of d must coincide with length of n!'
-        cladded_n, cladded_d = self.stack_layers(d_array)
-        self.simulation = self.simulate(cladded_n, cladded_d)
-        temp = np.abs(self.simulation - self.target) * self.weights
-        temp[self.weights == 0] = np.nan
-        fom_mean = np.nanmean(temp)
-        if return_std:
-            fom_std = np.nanstd(temp)
-            return fom_mean, fom_std
-        self.reward, _ = self.reward_func(self.simulation, self.target, self.weights, self.baseline_mse, self.normalization)
-        return fom_mean
-
     def create_action(self, mat_number, thickness, is_normalized=True):
         if not is_normalized:
             normalized_thickness = (thickness - self.min_thickness) / (self.max_thickness - self.min_thickness)
