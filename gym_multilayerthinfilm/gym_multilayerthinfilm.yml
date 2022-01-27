@@ -13,8 +13,6 @@ dependencies:
   - colorama=0.4.4=pyhd3eb1b0_0
   - cycler=0.10.0=py39haa95532_0
   - cytoolz=0.11.0=py39h2bbff1b_0
-  - dask=2021.7.0=pyhd3eb1b0_0
-  - dask-core=2021.7.0=pyhd3eb1b0_0
   - distributed=2021.7.0=py39haa95532_0
   - ffmpeg=4.3.1=ha925a31_0
   - freetype=2.10.4=hd328e21_0
@@ -85,5 +83,4 @@ dependencies:
   - zlib=1.2.11=h62dcd97_4
   - zstd=1.4.9=h19a0ad4_0
   - pip:
-    - tmm==0.1.8
 prefix: C:\Users\USERNAME\AppData\Local\Continuum\anaconda3\envs\mltf
