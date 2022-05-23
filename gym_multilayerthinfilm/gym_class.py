@@ -191,8 +191,10 @@ class MultiLayerThinFilm(gym.Env):
                 List of np.arrays of shape [1 x S] that holds the refractive indicies of the stacked layers
             self.d:                  list
                 List of floats that determine the thicknesses of each stacked layer.
-            self.reward:             float
-                rates the current stack based on its fullfillment of the target characteristics
+            one_hot_status:                  np.array of shape [Maximum number of layers L times number of available materials M]
+                Each M-th partition (of L partitions) one-hot encodes a normalized layer thickness and the layer material. In total, this vector encodes the entire stack.
+            handback_reward:             float
+                rates the current stack based on its fullfillment of the target characteristics; can be relative or absolute
             done:                    Boolean
                 done-flag that determines whether to end stacking or not.
             []:                      Empty list
@@ -480,8 +482,8 @@ class MultiLayerThinFilm(gym.Env):
             r:                     np.array of shape [D x S]
                 r holds the pixel-wise reflectivity values for the directions and wavelengths under consideration
             """
-        result_dicts = tmm.coh_tmm_fast_disp('s', n, d, (np.pi/180)*self.angle, self.wl)
-        result_dictp = tmm.coh_tmm_fast_disp('p', n, d, (np.pi/180)*self.angle, self.wl)
+        result_dicts = tmm('s', n, d, (np.pi/180)*self.angle, self.wl)
+        result_dictp = tmm('p', n, d, (np.pi/180)*self.angle, self.wl)
         if self.mode == 'reflectivity':
             rs = result_dicts['R']
             rp = result_dictp['R']

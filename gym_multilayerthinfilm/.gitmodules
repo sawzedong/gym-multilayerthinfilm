@@ -1,4 +1,4 @@
 [submodule "tmm_fast"]
 	path = tmm_fast
 	url = https://github.com/MLResearchAtOSRAM/tmm_fast.git
-	branch = gym
+	branch = main
