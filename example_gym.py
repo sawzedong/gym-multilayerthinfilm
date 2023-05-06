@@ -3,9 +3,9 @@ import numpy as np
 
 # Material specifications
 # Pathes were material txt-files are stored are gathered in a list
-pathAu = 'materials\\nAu.txt'
-pathNb2O5 = 'materials\\nNb2O5.txt'
-pathSiO2 = 'materials\\nSiO2.txt'
+pathAu = 'materials/nAu.txt'
+pathNb2O5 = 'materials/nNb2O5.txt'
+pathSiO2 = 'materials/nSiO2.txt'
 
 material_path_list = [pathAu, pathNb2O5, pathSiO2]
 

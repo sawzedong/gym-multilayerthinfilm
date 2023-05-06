@@ -1,0 +1,54 @@
+--- substrate is set to vacuum of infinite thickness ---
+--- ambient is set to vacuum of infinite thickness ---
+Traceback (most recent call last):
+  File "/Users/sawzedong/Desktop/Sci-Soc/IHPC-Project/gym-multilayerthinfilm/example_gym.py", line 35, in <module>
+    env.reset()
+  File "/Users/sawzedong/Desktop/Sci-Soc/IHPC-Project/gym-multilayerthinfilm/gym_multilayerthinfilm/gym_class.py", line 284, in reset
+    self.simulation = self.simulate(cladded_n, cladded_d)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sawzedong/Desktop/Sci-Soc/IHPC-Project/gym-multilayerthinfilm/gym_multilayerthinfilm/gym_class.py", line 486, in simulate
+    result_dicts = tmm('s', n, d, (np.pi/180)*self.angle, self.wl)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sawzedong/Desktop/Sci-Soc/IHPC-Project/gym-multilayerthinfilm/project/lib/python3.11/site-packages/tmm_fast/vectorized_tmm_dispersive_multistack.py", line 133, in coh_vec_tmm_disp_mstack
+    SnellThetas = SnellLaw_vectorized(N, Theta)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sawzedong/Desktop/Sci-Soc/IHPC-Project/gym-multilayerthinfilm/project/lib/python3.11/site-packages/tmm_fast/vectorized_tmm_dispersive_multistack.py", line 231, in SnellLaw_vectorized
+    angles[:, :, 0] = -is_not_forward_angle(n[:, 0], angles[:, :,  0]) * pi + angles[:, :, 0]
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/sawzedong/Desktop/Sci-Soc/IHPC-Project/gym-multilayerthinfilm/project/lib/python3.11/site-packages/tmm_fast/vectorized_tmm_dispersive_multistack.py", line 263, in is_not_forward_angle
+    assert (ncostheta.real < 100 * EPSILON)[~answer].all(), error_string
+AssertionError: It's not clear which beam is incoming vs outgoing. Weird index maybe?
+n: tensor([[[1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j, 1.+0.j,
+          1.+0.j, 1.+0.j, 1.+0.j]]])   angle: tensor([[[0.0000+0.j, 0.0000+0.j, 0.0000+0.j,  ..., 0.0000+0.j, 0.0000+0.j, 0.0000+0.j],
+         [0.0176+0.j, 0.0176+0.j, 0.0176+0.j,  ..., 0.0176+0.j, 0.0176+0.j, 0.0176+0.j],
+         [0.0353+0.j, 0.0353+0.j, 0.0353+0.j,  ..., 0.0353+0.j, 0.0353+0.j, 0.0353+0.j],
+         ...,
+         [1.5355+0.j, 1.5355+0.j, 1.5355+0.j,  ..., 1.5355+0.j, 1.5355+0.j, 1.5355+0.j],
+         [1.5531+0.j, 1.5531+0.j, 1.5531+0.j,  ..., 1.5531+0.j, 1.5531+0.j, 1.5531+0.j],
+         [1.5708+0.j, 1.5708+0.j, 1.5708+0.j,  ..., 1.5708+0.j, 1.5708+0.j, 1.5708+0.j]]])
